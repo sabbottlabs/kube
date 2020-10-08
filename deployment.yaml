@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube
+spec:
+  selector:
+    matchLabels:
+      run: kube
+  template:
+    metadata:
+      labels:
+        run: kube
+    spec:
+      containers:
+        - name: demo
+          image: sabbottlabs/kube
+          ports:
+            - containerPort: 80
+          env:
+            - name: APP_KEY
+              value: base64:lEw+ClzTPiys+KL1ye1oWmOj8KBhAJrlKtuyRHQeu2w=
