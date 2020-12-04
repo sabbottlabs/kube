@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: kube
 spec:
+  replicas: 3
   selector:
     matchLabels:
       run: kube
@@ -12,8 +13,9 @@ spec:
         run: kube
     spec:
       containers:
-        - name: demo
+        - name: demo-kube
           image: sabbottlabs/kube
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           env:
